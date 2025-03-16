@@ -59,3 +59,14 @@
 - System performance
 - User satisfaction scores
 
+## GitHub Repository Setup
+- [ ] Create a new repository on GitHub.com
+- [ ] Add the remote repository URL using:
+   ```
+   git remote add origin https://github.com/YOUR_USERNAME/book-recommendation-system.git
+   ```
+- [ ] Push your code to GitHub:
+   ```
+   git push -u origin main
+   ```
+
