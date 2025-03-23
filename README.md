@@ -29,7 +29,44 @@ See [ROADMAP.md](ROADMAP.md) for the detailed development plan.
 
 ## Getting Started
 
-Instructions for setting up and running the project will be added as development progresses.
+### Prerequisites
+- Node.js (v14 or later)
+- npm or yarn
+- MongoDB (local or Atlas)
+
+### Environment Setup
+1. Clone this repository
+2. Copy the `.env.example` file to a new file named `.env`
+3. Update the `.env` file with your own configuration values:
+   - `MONGO_URI`: Your MongoDB connection string
+   - `JWT_SECRET`: A secure random string for JWT token generation
+   - `NODE_ENV`: Set to `development`, `test`, or `production`
+
+### Installation
+1. Install server dependencies:
+   ```
+   npm install
+   ```
+2. Install client dependencies:
+   ```
+   cd client
+   npm install
+   ```
+
+### Running the Application
+1. Start the server:
+   ```
+   npm run server
+   ```
+2. Start the client:
+   ```
+   cd client
+   npm start
+   ```
+3. For development (running both server and client):
+   ```
+   npm run dev
+   ```
 
 ## Contributing
 

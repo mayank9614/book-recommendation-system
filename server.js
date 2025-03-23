@@ -1,13 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const connectDB = require('./config/db');
 
 // Load environment variables
 dotenv.config();
-
-// Connect to database
-connectDB();
 
 // Initialize express app
 const app = express();
@@ -21,10 +17,31 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Book Recommendation API' });
 });
 
-// Routes
-app.use('/api/users', require('./routes/users'));
-app.use('/api/books', require('./routes/books'));
-app.use('/api/recommendations', require('./routes/recommendations'));
+// Mock data for demonstration
+const books = [
+  { id: 1, title: 'To Kill a Mockingbird', author: 'Harper Lee', genre: 'Fiction' },
+  { id: 2, title: '1984', author: 'George Orwell', genre: 'Dystopian' },
+  { id: 3, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', genre: 'Fiction' },
+  { id: 4, title: 'Pride and Prejudice', author: 'Jane Austen', genre: 'Romance' },
+  { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', genre: 'Fiction' }
+];
+
+// Mock API routes
+app.get('/api/books', (req, res) => {
+  res.json(books);
+});
+
+app.get('/api/books/:id', (req, res) => {
+  const book = books.find(b => b.id === parseInt(req.params.id));
+  if (!book) return res.status(404).json({ message: 'Book not found' });
+  res.json(book);
+});
+
+app.get('/api/recommendations', (req, res) => {
+  // Mock recommendation logic
+  const randomBooks = [...books].sort(() => 0.5 - Math.random()).slice(0, 3);
+  res.json(randomBooks);
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
